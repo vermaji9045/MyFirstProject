@@ -22,6 +22,7 @@ public class ProjectSecurityConfig extends WebSecurityConfigurerAdapter {
                 .mvcMatchers("/saveMsg").permitAll()
                  .mvcMatchers("/courses").permitAll()
                  .mvcMatchers("/dashboard").authenticated()
+                .mvcMatchers("/displayMessages").hasRole("ADMIN")
                 .mvcMatchers("/login").permitAll()
                 .and().formLogin().loginPage("/login")
                 .defaultSuccessUrl("/dashboard")
@@ -38,7 +39,7 @@ public class ProjectSecurityConfig extends WebSecurityConfigurerAdapter {
         auth.inMemoryAuthentication()
                 .withUser("user").password("12345").roles("User")
                 .and()
-                .withUser("admin").password("123456").roles("User","Admin")
+                .withUser("admin").password("123456").roles("ADMIN")
                 .and().passwordEncoder(NoOpPasswordEncoder.getInstance());
     }
 }
