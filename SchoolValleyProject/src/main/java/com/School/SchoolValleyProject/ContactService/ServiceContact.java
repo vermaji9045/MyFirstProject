@@ -1,11 +1,16 @@
 package com.School.SchoolValleyProject.ContactService;
 
+import com.School.SchoolValleyProject.Constants.ValleyPublicConst;
 import com.School.SchoolValleyProject.Model.Contact;
+import com.School.SchoolValleyProject.repository.ContactRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.annotation.ApplicationScope;
 import org.springframework.web.context.annotation.RequestScope;
 import org.springframework.web.context.annotation.SessionScope;
+
+import java.time.LocalDateTime;
 
 @Slf4j
 @Service
@@ -15,25 +20,27 @@ import org.springframework.web.context.annotation.SessionScope;
 public class ServiceContact {
 
 
-    private int counter=0;
+    @Autowired
+    private ContactRepository contactRepository;
 
-    public ServiceContact() {
-        System.out.println("Contact Service Bean Created");
-    }
+
 
     public boolean saveMessage(Contact contact)
     {
-        boolean isSaved=true;
+        boolean isSaved=false;
+        contact.setStatus(ValleyPublicConst.OPEN);
+        contact.setCreatedAt(LocalDateTime.now());
+        contact.setCreatedBy(ValleyPublicConst.ANONYMOUS);
+        int result=contactRepository.saveContactMsg(contact);
 
-        log.info(contact.toString());
-         return   isSaved;
+
+
+       if (result>0)
+          isSaved=true;
+
+       return isSaved;
     }
 
-    public int getCounter() {
-        return counter;
-    }
 
-    public void setCounter(int counter) {
-        this.counter = counter;
-    }
+
 }
