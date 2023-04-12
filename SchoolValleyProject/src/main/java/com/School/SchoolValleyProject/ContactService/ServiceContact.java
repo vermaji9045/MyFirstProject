@@ -49,5 +49,15 @@ public class ServiceContact {
         return contactMsgs;
     }
 
+    public boolean UpdateMsgStatus(int contactId,String Updated_by)
+    {
+        boolean isUpdated=false;
+        int result=contactRepository.updatemsgStatus(contactId,ValleyPublicConst.CLOSE,Updated_by);
+        if(result>0)
+        {
+            isUpdated=true;
+        }
+        return isUpdated;
+    }
 
 }
