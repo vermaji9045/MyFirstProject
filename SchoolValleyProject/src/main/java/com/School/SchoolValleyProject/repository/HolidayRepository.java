@@ -21,7 +21,7 @@ public class HolidayRepository {
 
     public List<Holiday> findAllHoliday()
     {
-        String sql="SELECT *FROM HOLIDAYS";
+        String sql="SELECT *FROM Holidays";
 
          BeanPropertyRowMapper<Holiday> rowmapper= BeanPropertyRowMapper.newInstance(Holiday.class);
 
