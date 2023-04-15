@@ -66,7 +66,7 @@ public class ContactController  {
         return "redirect:/contact";
     }
 
-    @RequestMapping("/displayMessages")
+   @RequestMapping("/displayMessages")
 
     public ModelAndView displaymessage(Model model)
     {
@@ -74,7 +74,7 @@ public class ContactController  {
         ModelAndView modelAndView= new ModelAndView("/messages.html");
         modelAndView.addObject("contactMsgs",contactMsgs);
 
-        return modelAndView;
+       return modelAndView;
     }
 
     @RequestMapping(value = "/closeMsg",method = GET)
