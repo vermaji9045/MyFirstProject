@@ -1,10 +1,9 @@
 package com.School.SchoolValleyProject.controller;
 
-import com.School.SchoolValleyProject.ContactService.ServiceContact;
+import com.School.SchoolValleyProject.Services.ServiceContact;
 import com.School.SchoolValleyProject.Model.Contact;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
